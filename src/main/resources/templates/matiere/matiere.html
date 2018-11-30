@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{css/matieres.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
+<meta charset="ISO-8859-1">
+<title>detail matiere</title>
+</head>
+<body>
+	<header th:insert="@{ressource/headerNav}"></header>
+	
+	<div>
+		<h1 th:text="'detail de la matiere : '+${detailMatiere.nom}"></h1>
+		<p th:text="'numero matiere : '+${detailMatiere.numeroMatiere}"></p>	
+		<p th:text="'nom : '+${detailMatiere.nom}"></p>	
+		<p th:text="'coef : '+${detailMatiere.coef}"></p>	
+		<p th:text="'date debut : '+${#dates.format(detailMatiere.dateDebut, 'yyyy/MM/dd')}"></p>	
+		<p th:text="'date fin : '+${#dates.format(detailMatiere.dateFin, 'yyyy/MM/dd')}"></p>	
+	</div>
+	<div>
+		<ul th:each="enseignant : ${listEnseignant}">
+			<li><a th:href="@{enseignant(id=${enseignant.id})}" th:text="${enseignant.nom + ' ' + enseignant.prenom}"></a></li>
+		</ul>
+	
+	
+	</div>
+	<div>
+		<a th:href="@{matieres}">retour aux matieres</a>	
+	</div>
+
+</body>
+</html>

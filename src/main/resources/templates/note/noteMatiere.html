@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{css/notes.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
+<meta charset="ISO-8859-1">
+<title>note matiere</title>
+</head>
+<body>
+	<header th:insert="@{ressource/headerNav}"></header>
+		<div>
+		<h1 th:text="'detail de la matiere : '+${matiere.nom}"></h1>
+		<table>
+			<tr th:class="beta">
+				<th>etudiant</th>
+				<th>note</th>
+			</tr>
+			<tr th:each="note,i : ${matiere.notes}" th:class="${i.index % 2 == 0 } ? 'alpha' : 'beta' ">
+			
+				<td th:text="${note.etudiant.nom + ' ' + note.etudiant.prenom}"></td>
+				<td th:text="${note.note}"></td>
+			</tr>
+		</table>
+		<a th:href="@{notes}">retour</a>
+	</div>
+	
+
+</body>
+</html>

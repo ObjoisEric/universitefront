@@ -1,0 +1,39 @@
+@charset "ISO-8859-1";
+body,html{
+	margin : 0;
+	font-size: 32px;
+	background: #C8CDC8;
+}
+tr,th,td,table{
+	border: purple 2px solid;
+	border-collapse: collapse;
+	margin:auto;   
+}
+.ajoutEnseignant{
+	width: fit-content;
+	background-color: green;
+	margin: auto;
+	text-align: left;
+}
+.blocFormulaire{
+    text-align: center;
+    margin: auto;
+    width: fit-content;
+}
+[type="text"],[type="date"],select{
+    background: #FACBF0;  
+    width: 100%;
+    border:1px solid #E21CBB;
+    border-radius: 3px;
+    margin-top:1%; 
+}
+.blocValeur{
+    text-align: left;
+    margin-top:1%; 
+}
+.alpha {
+	background: #FACBF0; 	
+}
+.beta{	
+	background: #DBA1CE;
+}

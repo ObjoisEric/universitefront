@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{css/notes.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
+<meta charset="ISO-8859-1">
+<title>ajout note</title>
+</head>
+<body>
+	<header th:insert="@{ressource/headerNav}"></header>
+	<div class="blocFormulaire">
+		<form th:action="@{/ajouterNote}" method="post" th:object="${note}">
+		
+			
+			<div class="blocValeur">
+				<label for="matiere">matiere : </label>
+				<select name="idMatiere">
+					<option th:each="matiere : ${listeMatiere}"
+							th:value="${matiere.id}"
+							th:text="${matiere.nom}">
+					</option>				
+				</select>
+			</div>
+			
+			<div class="blocValeur">
+				<label for="etudiant">etudiant : </label>
+				<select name="idEtudiant">
+					<option th:each="etudiant : ${listeEtudiant}"
+							th:value="${etudiant.id}"
+							th:text="${etudiant.nom + ' ' + etudiant.prenom}">
+					</option>				
+				</select>
+			</div>
+
+			<div class="blocValeur">
+				<label for="note">note : </label>
+				<input type="text" th:field="*{note}" id="note"
+					   placeholder="note" />
+			</div>			
+			
+			<br /> <input type="submit" value="Ajouter" class="lien" />
+		</form>
+	</div>
+
+</body>
+</html>

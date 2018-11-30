@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{css/etudiants.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
+<meta charset="ISO-8859-1">
+<title>liste etudiants</title>
+</head>
+<body>
+	<header th:insert="@{ressource/headerNav}"></header>
+	<div>
+		<table>
+			<tr th:class="beta">
+				<th>numero etudiant</th>
+				<th>nom</th>
+				<th>prenom</th>
+			</tr>
+			<tr th:each="etudiant,i : ${listeEtudiant}" th:class="${i.index % 2 == 0 } ? 'alpha' : 'beta' ">
+				<td th:text="${etudiant.numeroEtudiant}"></td>
+				<td th:text="${etudiant.nom}"></td>
+				<td th:text="${etudiant.prenom}"></td>
+				<td><a th:href="@{etudiant(id=${etudiant.id})}">detail</a></td>
+				<td><a th:href="@{modifierEtudiant(id=${etudiant.id})}">modifier</a></td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<input type="button" onclick="location.href='ajouterEtudiant';" value="ajouter un etudiant" class="lien"/>
+	</div>
+	<script type="text/javascript" th:src="@{js/etudiants.js}"></script>
+</body>
+</html>

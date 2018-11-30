@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{css/enseignants.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
+<meta charset="ISO-8859-1">
+<title>liste notes</title>
+</head>
+<body>
+	<header th:insert="@{ressource/headerNav}"></header>
+	<div>
+		<div>
+			<input type="button" onclick="location.href='ajouterNote';" value="ajouter une note" class="lien"/>
+			<input type="button" onclick="location.href='notesDiff';" value="eleve en difficulte" class="lien"/>
+		</div>
+		<table>
+			<tr th:class="beta">
+				<th>etudiant</th>				
+				<th>matiere</th>
+				<th>note</th>
+			</tr>
+			<tr th:each="note,i : ${listeNote}" th:class="${i.index % 2 == 0 } ? 'alpha' : 'beta' ">
+				<td th:text="${note.etudiant.nom + ' ' + note.etudiant.prenom }"></td>
+				<td><a th:href="@{noteMatiere(id=${note.matiere.id})}" th:text="${note.matiere.nom}"></a></td>
+				<td th:text="${note.note}"></td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<a th:each="nbrPage : ${#numbers.sequence( 1, nbrPage)}" th:text="${nbrPage}" th:href="@{notes(page=${nbrPage})}"></a>
+
+
+	</div>
+	<script type="text/javascript" th:src="@{js/notes.js}"></script>
+</body>
+</html>

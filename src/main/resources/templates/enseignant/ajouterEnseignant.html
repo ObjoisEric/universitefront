@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{css/enseignants.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
+<meta charset="ISO-8859-1">
+<title>ajout enseignant</title>
+</head>
+<body>
+	<header th:insert="@{ressource/headerNav}"></header>
+	<div class="blocFormulaire">
+		<form th:action="@{/ajouterEnseignant}" method="post" th:object="${enseignant}">
+
+			<div class="blocValeur">
+				<label for="numero">numero enseignant : </label> <input
+					type="text" th:field="*{numero}" id="numero"
+					placeholder="numero enseignant" />
+			</div>
+			<div class="blocValeur">
+				<label for="nom">nom : </label> <input type="text" th:field="*{nom}"
+					id="nom" placeholder="nom" />
+			</div>
+			<div class="blocValeur">
+				<label for="prenom">prenom : </label> <input type="text"
+					th:field="*{prenom}" id="prenom" placeholder="prenom" />
+			</div>
+			<div class="blocValeur">
+				<label for="dateNaissance">date de naissance : </label> <input
+					type="date" th:field="*{dateNaissance}" id="dateNaissance"
+					name="dateNaissance" placeholder="date naissance" />
+			</div>
+			<div class="blocValeur">
+				<label for="sexe">sexe : </label> <input type="radio"
+					th:field="*{sexe}" value="M" checked="checked"> Male <input type="radio"
+					th:field="*{sexe}" value="F"> Female
+			</div>
+			<div class="blocValeur">
+				<label for="grade">grade : </label> <input type="text"
+					th:field="*{grade}" id="grade" placeholder="grade" />
+			</div>
+			<div class="blocValeur">
+				<label for="dateEmbauche">date embauche :</label> <input type="date"
+					th:field="*{dateEmbauche}" id="dateEmbauche"
+					placeholder="date embauche" />
+			</div>
+			<br /> <input type="submit" value="Ajouter" class="lien" />
+		</form>
+	</div>
+
+</body>
+</html>

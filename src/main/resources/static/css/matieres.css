@@ -1,0 +1,33 @@
+@charset "ISO-8859-1";
+body,html{
+	margin : 0;
+	font-size: 32px;
+	background: #C8CDC8;
+}
+tr,th,td,table{
+	border: blue 2px solid;
+	border-collapse: collapse;
+	margin:auto;
+}
+.blocFormulaire{
+    text-align: center;
+    margin: auto;
+    width: fit-content;
+}
+[type="text"],[type="date"],select{
+    background: #99C5EF;  
+    width: 100%;
+    border:1px solid #376C9C;
+    border-radius: 3px;
+    margin-top:1%; 
+}
+.blocValeur{
+    text-align: left;
+    margin-top:1%; 
+}
+.alpha {
+	background: #99C5EF; 	
+}
+.beta{	
+	background: #517A9F;
+}

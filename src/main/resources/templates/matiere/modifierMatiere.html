@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{css/matieres.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
+<meta charset="ISO-8859-1">
+<title>modifier matiere</title>
+</head>
+<body>
+	<header th:insert="@{ressource/headerNav}"></header>
+	<div class="blocFormulaire">
+		<form th:action="@{/modifierMatiere}" method="post" th:object="${matiere}">
+
+			<div class="blocValeur">
+				<label for="numeroMatiere">numero matiere : </label> <input
+					type="text" th:field="*{numeroMatiere}" id="numeroMatiere"
+					placeholder="numero matiere" />
+			</div>
+			<div class="blocValeur">
+				<label for="nom">nom : </label> <input type="text" th:field="*{nom}"
+					id="nom" placeholder="nom" />
+			</div>
+			<div class="blocValeur">
+				<label for="coef">coef : </label> <input type="text"
+					th:field="*{coef}" id="coef" placeholder="coef" />
+			</div>
+			<div class="blocValeur">
+				<label for="dateDebut">date debut : </label>
+				<input type="date" th:field="*{dateDebut}" id="dateDebut" 
+					   placeholder="date Debut" th:value="${#dates.format(matiere.dateDebut, 'dd/MM/yyyy')}"/>
+			</div>
+			<div class="blocValeur">
+				<label for="dateFin">date debut : </label>
+				<input type="date" th:field="*{dateFin}" id="dateFin" 
+					   placeholder="date fin" th:value="${#dates.format(matiere.dateFin, 'dd/MM/yyyy')}"/>
+			</div>
+			<div class="blocValeur">
+				<label for="enseignant">enseignant : </label>
+				<select name="idEnseignant">
+					<option th:each="enseignant : ${listeEnseignant}"
+							th:value="${enseignant.id}"
+							th:text="${enseignant.nom + ' ' + enseignant.prenom}"							
+							th:selected="${enseignant.id == matiere.enseignant.id } ? 'selected'">
+					</option>				
+				</select>
+			</div>
+			<div class="blocValeur">				
+				<input type="text" th:field="*{id}" id="id" hidden="hidden"/>				
+			</div>
+			
+			
+			<br /> <input type="submit" value="Modifier" class="lien" />
+		</form>
+	</div>
+
+</body>
+</html>

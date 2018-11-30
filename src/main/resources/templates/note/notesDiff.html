@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{css/notes.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
+<meta charset="ISO-8859-1">
+<title>liste notes</title>
+</head>
+<body>
+	<header th:insert="@{ressource/headerNav}"></header>
+	<div>
+		<table>
+			<tr th:class="beta">
+				<th>etudiant</th>				
+				<th>nombre de note</th>
+			</tr>
+			<tr th:each="etudiant,i : ${listEtudiantDiff}" th:class="${i.index % 2 == 0 } ? 'alpha' : 'beta' ">
+				<td th:text="${etudiant.nom + ' ' + etudiant.prenom }"></td>
+				<td th:text="${etudiant.notes.size()}"></td>
+			</tr>
+		</table>
+	</div>
+	<script type="text/javascript" th:src="@{js/notes.js}"></script>
+</body>
+</html>

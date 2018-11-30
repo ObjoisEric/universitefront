@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{css/matieres.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
+<meta charset="ISO-8859-1">
+<title>toute les matieres</title>
+</head>
+<body>
+	<header th:insert="@{ressource/headerNav}"></header>
+	<div>
+		<table>
+			<tr th:class="beta">
+				<th>numero matiere</th>
+				<th>nom</th>
+				<th>coef</th>
+				<th>date debut</th>
+				<th>date fin</th>
+				<th>nom enseignant</th>
+			</tr>
+			<tr th:each="matiere,i : ${listeMatiere}" th:class="${i.index % 2 == 0 } ? 'alpha' : 'beta' ">
+				<td th:text="${matiere.numeroMatiere}"></td>
+				<td th:text="${matiere.nom}"></td>
+				<td th:text="${matiere.coef}"></td>
+				<td th:text="${#dates.format(matiere.dateDebut, 'yyyy/MM/dd')}"></td>
+				<td th:text="${#dates.format(matiere.dateFin, 'yyyy/MM/dd')}"></td>
+				<td th:text="${matiere.enseignant.nom}"></td> 
+				<td><a th:href="@{matiere(id=${matiere.id})}">detail</a></td>
+				<td><a th:href="@{modifierMatiere(id=${matiere.id})}">modifier</a></td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<input type="button" onclick="location.href='ajouterMatiere';" value="ajouter une matiere" class="lien"/>
+	</div>
+
+</body>
+</html>

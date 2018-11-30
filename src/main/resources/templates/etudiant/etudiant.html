@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{css/etudiants.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
+<meta charset="ISO-8859-1">
+<title>detail etudiant</title>
+</head>
+<body>
+	<header th:insert="@{ressource/headerNav}"></header>
+
+	<div>
+		<h1
+			th:text="'detail de l\'etudiant : '+ ${detailEtudiant.nom} + ' '+ ${detailEtudiant.prenom}"></h1>
+		<div class="unorderedList">
+			<ul>
+				<li th:text="'numero etudiant : '+ ${detailEtudiant.numeroEtudiant}"></li>
+				<li th:text="'nom : '+ ${detailEtudiant.nom}"></li>
+				<li th:text="'prenom : '+ ${detailEtudiant.prenom}"></li>
+				<li th:text="'date naissance : '+ ${#dates.format(detailEtudiant.dateNaissance, 'yyyy/MM/dd')}"></li>
+				<li th:text="'sexe : '+ ${detailEtudiant.sexe}"></li>		
+			</ul>
+		</div>		
+		<div>
+			<table th:if="${!(notesEtudiant.isEmpty())}">
+				<tr th:class="beta">
+					<th >matiere</th>
+					<th>note</th>
+				</tr>
+				<tr th:each="note,i : ${notesEtudiant}" th:class="${i.index % 2 == 0 } ? 'alpha' : 'beta' ">
+					<td><a th:href="@{matiere(id=${note.matiere.id})}" th:text="${note.matiere.nom}"></a> </td>
+					<td th:text="${note.note}"></td>
+				</tr>
+			</table>
+		</div>
+
+		<div>
+			<table th:if="${!(noteInfdixEtudiant.isEmpty())}">
+				<tr th:class="beta">
+					<th>matiere</th>
+					<th>note</th>
+				</tr>
+				<tr th:each="noteInfDix,i : ${noteInfdixEtudiant}" th:class="${i.index % 2 == 0 } ? 'alpha' : 'beta' ">
+					<td th:text="${noteInfDix.matiere.nom}"></td>
+					<td th:text="${noteInfDix.note}"></td>
+				</tr>
+			</table>
+		</div>
+		<a th:href="@{etudiants}">retour</a>
+	</div>
+	
+	
+
+</body>
+</html>

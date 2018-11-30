@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{css/enseignants.css}">
+<link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
+<meta charset="ISO-8859-1">
+<title>detail enseignant</title>
+</head>
+<body>
+	<header th:insert="@{ressource/headerNav}"></header>
+
+	<div>
+		<h1
+			th:text="'detail de l\'enseignant : ' + ${enseignantDetail.nom} + ' ' + ${enseignantDetail.prenom}">
+		</h1>
+
+		<p th:text="'numero enseignant : '+ ${enseignantDetail.numero}"></p>
+		<p th:text="'nom : '+ ${enseignantDetail.nom}"></p>
+		<p th:text="'prenom : '+ ${enseignantDetail.prenom}"></p>
+		<p th:text="'date naissance : '+ ${#dates.format(enseignantDetail.dateNaissance, 'yyyy/MM/dd')}"></p>
+		<p th:text="'sexe : '+ ${enseignantDetail.sexe}"></p>
+		<p th:text="'grade : '+ ${enseignantDetail.grade}"></p>
+		<p th:text="'date embauche : '+ ${#dates.format(enseignantDetail.dateEmbauche, 'yyyy/MM/dd')}"></p>
+	</div>
+	<div>
+		<ul th:each="matiere : ${listMatiere}">
+			<li><a th:href="@{matiere(id=${matiere.id})}" th:text="${matiere.nom}"></a></li>
+		</ul>
+	</div>
+	<div>
+		<a th:href="@{enseignants}">retour liste enseignants</a>
+	</div>
+
+</body>
+</html>
